@@ -52,6 +52,98 @@ select,input:not(#q),textarea{width:100%;padding:10px;border:1px solid var(--bd)
 #panel{top:auto;bottom:0;left:0;right:0;width:auto;max-height:48vh;border-radius:20px 20px 0 0;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
 #panel.min{max-height:42px;overflow:hidden}.grip{display:block}}
 .pin.qrp{background:#111;color:#fff}@supports(height:100dvh){html,body{height:100dvh}}#panel{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}@media(max-width:700px){.row button{min-height:52px}.ctl button{width:52px;height:52px}.it{padding:13px 4px}}
+
+/* Ajustes responsivos: celular, tablet e telas estreitas */
+.it > div { min-width: 0; }
+.it > div b, .it > div small { overflow-wrap: anywhere; }
+#panel { scrollbar-width: thin; }
+button, input, select, textarea { touch-action: manipulation; }
+
+@media (max-width: 900px) {
+  #sb { width: min(380px, calc(100vw - 24px)); }
+  #panel { width: min(380px, calc(100vw - 24px)); }
+}
+
+@media (max-width: 700px) {
+  html, body { min-width: 320px; }
+  #sb {
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    left: 10px;
+    right: 10px;
+    width: auto;
+    min-height: 50px;
+    padding-left: 13px;
+    border-radius: 16px;
+  }
+  #sb b { flex: none; font-size: 12px; }
+  #sb input { min-width: 0; padding: 10px 8px; font-size: 16px; }
+  .ctl {
+    top: calc(68px + env(safe-area-inset-top, 0px));
+    right: 10px;
+    gap: 7px;
+  }
+  .ctl button {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    font-size: 19px;
+  }
+  #lay {
+    top: calc(68px + env(safe-area-inset-top, 0px));
+    right: 62px;
+    width: min(230px, calc(100vw - 82px));
+    max-height: 55dvh;
+    overflow: auto;
+  }
+  #panel {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    max-height: min(54dvh, 460px);
+    padding: 14px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 20px #0003;
+  }
+  #panel.min { max-height: 42px; padding-top: 10px; }
+  .grip { height: 20px; margin: -8px 0 4px; cursor: pointer; }
+  .it { gap: 10px; padding: 12px 2px; }
+  .ic { width: 34px; height: 34px; }
+  .row { gap: 8px; }
+  .row > div { min-width: 0; }
+  .row button, button.b {
+    min-width: 0;
+    min-height: 46px;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  #qm { padding: 16px; }
+  #qm > div { width: min(100%, 340px); max-height: 85dvh; overflow: auto; }
+  #qb canvas, #qb img { max-width: 100%; height: auto; }
+  #toast { bottom: calc(58dvh + 12px); max-width: calc(100vw - 32px); text-align: center; }
+}
+
+@media (max-width: 420px) {
+  #sb { min-height: 46px; }
+  #sb input { font-size: 15px; }
+  .ctl { top: calc(62px + env(safe-area-inset-top, 0px)); }
+  .ctl button { width: 40px; height: 40px; font-size: 18px; }
+  #lay { top: calc(62px + env(safe-area-inset-top, 0px)); right: 58px; }
+  #panel { max-height: 57dvh; padding-left: 13px; padding-right: 13px; }
+  #panel h2 { font-size: 20px; }
+  #panel h3 { font-size: 17px; }
+  .row button { font-size: 13px; }
+  .sum { font-size: 18px; }
+}
+
+@media (max-height: 520px) and (max-width: 900px) {
+  #panel { max-height: 43dvh; }
+  #panel.min { max-height: 40px; }
+  .ctl { flex-direction: row; flex-wrap: wrap; max-width: 45vw; justify-content: flex-end; }
+  #lay { top: 68px; }
+}
+
 </style></head><body>
 <div id="map"></div>
 <div id="sb"><b>SENAI</b><input id="q" placeholder="Pesquisar sala, laboratório, cantina…" autocomplete="off"></div>
